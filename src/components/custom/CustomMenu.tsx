@@ -14,7 +14,7 @@ export const CustomMenu = () => {
     return path === pathname;
   };
   return (
-    <NavigationMenu>
+    <NavigationMenu className='py-5'>
       <NavigationMenuList>
         {/* Home */}
         <NavigationMenuItem>

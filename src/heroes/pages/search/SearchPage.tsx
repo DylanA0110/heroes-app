@@ -12,7 +12,7 @@ export const SearchPage = () => {
       />
       <CustomBreadcrumbs
         currentPage="Buscador de Heroes"
-        breadCrumbs={[
+        breadcrumbs={[
           { label: 'home', to: '/' },
           { label: 'home1', to: '/' },
         ]}
