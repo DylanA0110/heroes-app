@@ -38,17 +38,6 @@ export const CustomPagination = ({ totalPages }: Props) => {
           {index + 1}
         </Button>
       ))}
-
-      {/* <Button variant="outline" size="sm">
-        2
-      </Button>
-      <Button variant="outline" size="sm">
-        3
-      </Button> */}
-      {/* <Button variant="ghost" size="sm" disabled>
-        <MoreHorizontal className="h-4 w-4" />
-      </Button> */}
-
       <Button
         variant="outline"
         size="sm"

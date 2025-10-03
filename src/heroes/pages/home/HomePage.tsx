@@ -107,12 +107,9 @@ export const HomePage = () => {
         </Tabs>
 
         {/* Pagination */}
-        {
-          selectedTab !== 'favorites' && heroesResponse?.pages! > 1 && (
-            <CustomPagination totalPages={heroesResponse?.pages || 1} />
-          )
-        }
-        <CustomPagination totalPages={heroesResponse?.pages || 1} />
+        {selectedTab !== 'favorites' && heroesResponse?.pages! > 1 && (
+          <CustomPagination totalPages={heroesResponse?.pages || 1} />
+        )}
       </>
     </>
   );
