@@ -14,7 +14,7 @@ export const CustomMenu = () => {
     return path === pathname;
   };
   return (
-    <NavigationMenu className='py-5'>
+    <NavigationMenu className="py-5">
       <NavigationMenuList>
         {/* Home */}
         <NavigationMenuItem>
@@ -34,7 +34,7 @@ export const CustomMenu = () => {
               'p-2 rounded-md'
             )}
           >
-            <Link to="/search">Buscar SuperHeores</Link>
+            <Link to="/search">Buscar SuperHeroes</Link>
           </NavigationMenuLink>
         </NavigationMenuItem>
       </NavigationMenuList>
