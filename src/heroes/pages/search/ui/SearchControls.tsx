@@ -134,6 +134,7 @@ export const SearchControls = () => {
                       <SelectItem value="Liga de la Justicia">
                         Liga de la Justicia
                       </SelectItem>
+                      <SelectItem value="Solo">Solo</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
