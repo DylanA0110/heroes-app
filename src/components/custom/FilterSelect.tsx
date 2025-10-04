@@ -1,4 +1,4 @@
-import { ALL_VALUE, useFilterParams } from '@/hooks/useFilterParams';
+import { ALL_VALUE, useFilterParams } from '@/heroes/hooks/useFilterParams';
 import {
   Select,
   SelectContent,

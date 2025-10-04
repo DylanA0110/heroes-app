@@ -9,7 +9,7 @@ import {
   AccordionItem,
 } from '@/components/ui/accordion';
 import { FilterSelect } from '@/components/custom/FilterSelect';
-import { useFilterParams } from '@/hooks/useFilterParams';
+import { useFilterParams } from '@/heroes/hooks/useFilterParams';
 
 export const SearchControls = () => {
   const { get, set, clearMany } = useFilterParams();
