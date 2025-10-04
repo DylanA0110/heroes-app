@@ -47,6 +47,9 @@ export const SearchControls = () => {
         { value: 'Vengadores', label: 'Vengadores' },
         { value: 'Liga de la Justicia', label: 'Liga de la Justicia' },
         { value: 'Solo', label: 'Solo' },
+        { value: 'X-Men', label: 'X-Men' },
+        { value: 'Jóvenes Titanes', label: 'Jóvenes Titanes' },
+        { value: 'Suicide Squad', label: 'Suicide Squad' },
       ],
     },
     {
