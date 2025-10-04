@@ -9,12 +9,20 @@ import {
   AccordionContent,
   AccordionItem,
 } from '@/components/ui/accordion';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 export const SearchControls = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const input = useRef<HTMLInputElement>(null);
   const activeAccordion = searchParams.get('active-accordion') ?? '';
   const strength = Number(searchParams.get('strength')) ?? 0;
+
   const setQueryParams = (name: string, value: string) => {
     setSearchParams((prev) => {
       prev.set(name, value);
@@ -26,6 +34,19 @@ export const SearchControls = () => {
       const value = input.current?.value ?? '';
       setQueryParams('name', value);
     }
+  };
+  const handleClearAll = () => {
+    setSearchParams((prev) => {
+      // Lista de filtros que querés limpiar
+      prev.delete('team');
+      prev.delete('category');
+      prev.delete('universe');
+      prev.delete('status');
+      prev.delete('strength');
+      prev.delete('name');
+      prev.delete('active-accordion'); // opcional, si querés cerrar el accordion
+      return prev;
+    });
   };
   return (
     <>
@@ -52,10 +73,6 @@ export const SearchControls = () => {
             onClick={() => {
               if (activeAccordion === 'advanced-filters') {
                 setQueryParams('active-accordion', '');
-                // setSearchParams((prev) => {
-                //   prev.delete('active-accordion');
-                //   return prev;
-                // });
                 return;
               }
               setQueryParams('active-accordion', 'advanced-filters');
@@ -87,32 +104,116 @@ export const SearchControls = () => {
             <div className="bg-white rounded-lg p-6 mb-8 shadow-sm border">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-lg font-semibold">Advanced Filters</h3>
-                <Button variant="ghost">Clear All</Button>
+                <Button variant="ghost" onClick={handleClearAll}>
+                  Clear All
+                </Button>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Team</label>
-                  <div className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                    All teams
-                  </div>
+                  {/* Team */}
+                  <Select
+                    value={searchParams.get('team') ?? '__all__'}
+                    onValueChange={(value) => {
+                      if (value === '__all__') {
+                        setSearchParams((prev) => {
+                          prev.delete('team');
+                          return prev;
+                        });
+                      } else {
+                        setQueryParams('team', value);
+                      }
+                    }}
+                  >
+                    <SelectTrigger className="h-10 w-full">
+                      <SelectValue placeholder="All teams" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="__all__">All teams</SelectItem>
+                      <SelectItem value="Vengadores">Vengadores</SelectItem>
+                      <SelectItem value="Liga de la Justicia">
+                        Liga de la Justicia
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Category</label>
-                  <div className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                    All categories
-                  </div>
+                  {/* Category */}
+                  <Select
+                    value={searchParams.get('category') ?? '__all__'}
+                    onValueChange={(value) => {
+                      if (value === '__all__') {
+                        setSearchParams((prev) => {
+                          prev.delete('category');
+                          return prev;
+                        });
+                      } else {
+                        setQueryParams('category', value);
+                      }
+                    }}
+                  >
+                    <SelectTrigger className="h-10 w-full">
+                      <SelectValue placeholder="All categories" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="__all__">All categories</SelectItem>
+                      <SelectItem value="Hero">Heroes</SelectItem>
+                      <SelectItem value="Villain">Villanos</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Universe</label>
-                  <div className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                    All universes
-                  </div>
+                  {/* Universe */}
+                  <Select
+                    value={searchParams.get('universe') ?? '__all__'}
+                    onValueChange={(value) => {
+                      if (value === '__all__') {
+                        setSearchParams((prev) => {
+                          prev.delete('universe');
+                          return prev;
+                        });
+                      } else {
+                        setQueryParams('universe', value);
+                      }
+                    }}
+                  >
+                    <SelectTrigger className="h-10 w-full">
+                      <SelectValue placeholder="All universes" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="__all__">All universes</SelectItem>
+                      <SelectItem value="Marvel">Marvel</SelectItem>
+                      <SelectItem value="DC">DC</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium">Status</label>
-                  <div className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm">
-                    All statuses
-                  </div>
+                  {/* Status */}
+                  <Select
+                    value={searchParams.get('status') ?? '__all__'}
+                    onValueChange={(value) => {
+                      if (value === '__all__') {
+                        setSearchParams((prev) => {
+                          prev.delete('status');
+                          return prev;
+                        });
+                      } else {
+                        setQueryParams('status', value);
+                      }
+                    }}
+                  >
+                    <SelectTrigger className="h-10 w-full">
+                      <SelectValue placeholder="All statuses" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="__all__">All statuses</SelectItem>
+                      <SelectItem value="Active">Active</SelectItem>
+                      <SelectItem value="Inactive">Inactive</SelectItem>
+                    </SelectContent>
+                  </Select>
                 </div>
               </div>
               <div className="mt-4">
